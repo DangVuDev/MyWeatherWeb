@@ -1,0 +1,366 @@
+/* Thiết lập chung cho toàn bộ ứng dụng */
+.weather-app {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(45deg, #00d4ff, #ff8b8b, #ffd16e, #72ff72, #8c6eff, #6a4fff, #ff72c7);
+    background-size: 400% 400%;
+    animation: gradientBackground 10s ease infinite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Animation chuyển động nền qua lại */
+@keyframes gradientBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Khối tìm kiếm thành phố */
+.search-box {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    max-width: 600px;
+    transition: all 0.3s ease;
+}
+
+.search-box input {
+    padding: 12px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 350px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.search-box button {
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+/* Cảnh báo lỗi */
+.error-message {
+    color: red;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Khối thông tin thời tiết */
+.weather-info {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    background-image: linear-gradient(45deg, #0a0000, #e83ddf, #35d2fd,#35fd5d, #f93f15);
+    background-size: 200% 200%;
+    animation: gradientMovement 4s ease infinite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Animation cho nền chuyển động */
+/* Animation cho nền chuyển động */
+@keyframes gradientMovement {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+.weather-info h2{
+    font-size: 40px;
+}
+
+.weather-icon {
+    font-size: 50px;  /* Điều chỉnh kích thước biểu tượng theo nhu cầu */
+    align-items: center;
+  }
+
+/* Tổng thể container hiển thị thời tiết */
+.current-weather {
+    display: flex;               /* Dùng flexbox để căn chỉnh các phần tử theo hàng ngang */
+    align-items: center;         /* Căn giữa dọc */
+    justify-content: center;     /* Căn giữa ngang */
+    background: #e3f2fd;         /* Màu nền nhẹ nhàng */
+                   /* Khoảng cách xung quanh */
+    border-radius: 15px;         /* Bo góc */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ nhẹ */
+    width: 95%;                  /* Chiếm 80% chiều rộng màn hình */
+    margin: 20px auto;           /* Căn giữa ngang */
+  }
+  
+  /* Màu chữ cho thời tiết hiện tại */
+  .current-weather p {
+    font-size: 60px;             /* Kích thước chữ lớn cho nhiệt độ */
+    font-weight: bold;           /* Chữ đậm */
+    color: #060afde9;              /* Màu chữ xanh dương */
+    margin: 0 15px 0 0;          /* Thêm khoảng cách bên phải */
+    text-align: center;          /* Căn giữa */
+    text-shadow: 2px 2px 5px rgba(249, 249, 249, 0.3), -2px -2px 5px rgba(253, 176, 221, 0.3);
+  }
+  
+  /* Biểu tượng thời tiết */
+  .weather-icon {
+    font-size: 80px;             /* Kích thước biểu tượng thời tiết lớn */
+    display: inline-block;       /* Hiển thị biểu tượng trong dòng */
+    vertical-align: middle;      /* Căn giữa dọc với chữ */
+    margin-left: 10px;           /* Khoảng cách giữa nhiệt độ và biểu tượng */
+    text-shadow: 1px 1px 4px rgba(156, 121, 121, 0.3), -2px -2px 5px rgba(9, 6, 8, 0.815);              /* Màu sắc cho biểu tượng */
+  }
+  
+  /* Hiệu ứng khi hover (nếu cần) */
+  .current-weather:hover {
+    background: #bbdefb;         /* Màu nền khi hover */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Bóng đổ lớn hơn khi hover */
+    cursor: pointer;             /* Thêm con trỏ dạng pointer */
+  }
+
+
+/* Tổng quan cho container */
+.hourly-forecast {
+    width: 95%;
+    height: 300px;
+    
+    background: linear-gradient(45deg, #00d4ff, #ff8b8b, #ffd16e, #72ff72, #8c6eff, #6a4fff, #ff72c7);
+    background-size: 200% 200%;
+    animation: gradientBackgroundHourly 10s ease infinite;
+    border-radius: 10px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+@keyframes gradientBackgroundHourly {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.hourly-forecast h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+}
+
+/* Danh sách các mục theo giờ */
+.hourly-list {
+    display: flex;
+    overflow-x: auto; /* Cho phép cuộn ngang */
+    gap: 10px;
+    padding: 10px 0;
+    width: 100%; /* Đảm bảo danh sách chiếm hết chiều rộng của khung */
+    min-width: 100%; /* Cập nhật thêm để danh sách có thể kéo rộng gần bằng khung ngoài */
+    box-sizing: border-box; /* Đảm bảo padding không làm tràn phần tử */
+    scroll-behavior: smooth; /* Thêm hiệu ứng cuộn mượt */
+    
+}
+
+/* Điều chỉnh thanh cuộn ngang */
+.hourly-list::-webkit-scrollbar {
+    height: 8px; /* Chiều cao thanh cuộn */
+}
+
+.hourly-list::-webkit-scrollbar-thumb {
+    background: #bdbdbd; /* Màu sắc của thanh cuộn */
+    border-radius: 4px; /* Bo góc thanh cuộn */
+}
+
+.hourly-list::-webkit-scrollbar-track {
+    background: transparent; /* Nền trong suốt cho track */
+}
+
+/* Thiết kế từng item */
+.hourly-item {
+    flex: 0 0 100px;
+    text-align: center;
+    background: linear-gradient(135deg, #ffffff, #f1f1f1);
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.hourly-item:hover {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, #bbdefb, #e3f2fd);
+    cursor: pointer;
+}
+
+/* Phần giờ hiển thị */
+.hour-time {
+    font-size: 16px;
+    font-weight: bold;
+    color: #b7fff1;
+    margin-bottom: 5px;
+    text-shadow: 1px 1px 4px rgba(156, 121, 121, 0.3), -2px -2px 5px rgba(9, 6, 8, 0.815);
+}
+
+/* Phần nhiệt độ và biểu tượng */
+.hour-temp {
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    color: #b1fff7;
+}
+
+/* Dự báo theo ngày */
+.daily-list {
+    display: flex;
+    width: 100%;
+    background-color: #f9d5cf;
+    border-radius: 24px;
+    
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+/* Khối dự báo theo ngày */
+.daily-item {
+    display: flex;                 /* Dùng flexbox để căn chỉnh các phần tử theo hàng ngang */
+    justify-content: space-between;/* Căn đều các phần tử trong khối */
+    align-items: center;           /* Căn giữa các phần tử dọc */
+    width: 100%;                   /* Chiếm toàn bộ chiều rộng của container */
+    background-color: #ffffff;     /* Màu nền trắng */
+    padding: 20px;                 /* Khoảng cách xung quanh */
+    border-radius: 12px;           /* Bo góc khối */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ nhẹ */
+    box-sizing: border-box;        /* Bao gồm padding và border vào kích thước tổng */
+    margin-bottom: 5px;           /* Khoảng cách giữa các khối */
+  }
+
+  .daily-item:hover {
+    transform: scale(1.01);
+    background: linear-gradient(135deg, #bbdefb, #e3f2fd);
+    cursor: pointer;
+}
+  
+  .daily-forecast h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1976d2;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Danh sách dự báo */
+  /* Dự báo theo ngày */
+    .daily-forecast {
+        margin-top: 30px;
+        width: 95%;
+        font-family: Arial, sans-serif;
+        color: #333;
+    }
+  
+ 
+  /* Thứ trong tuần */
+  .daily-item .weekday {
+    font-size: 20px;
+    font-weight: bold;
+    color: #d3e6f8;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 4px rgba(156, 121, 121, 0.3), -2px -2px 5px rgba(9, 6, 8, 0.815);
+  }
+  
+  /* Ngày tháng */
+  .daily-item .datedate {
+    font-size: 20px;
+    color: #1976d2;
+    
+    margin-bottom: 10px;
+  }
+  
+  /* Nhiệt độ */
+  .daily-item .temperature {
+    font-size: 20px;
+    font-weight: bold;
+    color: #b1fff7;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 4px rgba(156, 121, 121, 0.3), -2px -2px 5px rgba(9, 6, 8, 0.815);
+  }
+  
+  /* Biểu tượng thời tiết */
+  .daily-item .weather-icon {
+    font-size: 40px;
+    color: #1976d2;
+    text-shadow: 1px 1px 4px rgba(156, 121, 121, 0.3), -2px -2px 5px rgba(9, 6, 8, 0.815);
+  }
+
+/* Media Query cho điện thoại */
+@media (max-width: 768px) {
+    .weather-app {
+        padding: 10px;
+    }
+
+    .search-box {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .search-box input,
+    .search-box button {
+        width: 100%;
+    }
+
+    .weather-info {
+        width: 100%;
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .hourly-list {
+        flex-direction: row;
+        overflow-x: scroll;
+    }
+
+    .hourly-item {
+        min-width: 80px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .weather-app {
+        padding: 5px;
+    }
+
+    .weather-info {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .hourly-list {
+        gap: 5px;
+    }
+
+    .hourly-item {
+        min-width: 60px;
+        padding: 8px;
+    }
+}
