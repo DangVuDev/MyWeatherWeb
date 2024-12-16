@@ -192,7 +192,8 @@ const getColorByTemperature = (temp) => {
   }
   const splitRange = (range) => {
     const [start, end] = range.split('-').map(Number); // Tách chuỗi và chuyển thành số
-    return { start, end }; // Trả về một đối tượng chứa hai số
+  
+    return { start: parseInt(start), end: parseInt(end) }; // Trả về đối tượng đúng
   };
   return (
     <div className="weather-app">
