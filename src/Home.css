@@ -287,14 +287,6 @@
     text-shadow: 1px 1px 4px rgba(156, 121, 121, 0.3), -2px -2px 5px rgba(9, 6, 8, 0.815);
   }
   
-  /* Ngày tháng */
-  .daily-item .datedate {
-    font-size: 20px;
-    color: #1976d2;
-    
-    margin-bottom: 10px;
-  }
-  
   /* Nhiệt độ */
   .daily-item .temperature {
     font-size: 20px;
