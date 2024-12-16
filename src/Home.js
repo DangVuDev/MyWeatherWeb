@@ -19,7 +19,7 @@ const WeatherApp = () => {
     }
 
     try {
-      const response = await axios.get(`http://localhost:5237/api/get-weather-at?city=${city}`);
+      const response = await axios.get(`https://myweatherapi-4fcs.onrender.com/api/get-weather-at?city=${city}`);
       setWeather(response.data);
     } catch (err) {
       setError('Unable to get weather information, please try again!');
