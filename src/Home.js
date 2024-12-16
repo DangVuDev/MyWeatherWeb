@@ -190,7 +190,11 @@ const getColorByTemperature = (temp) => {
     // Đặt màu nền dựa trên nhiệt độ
     return `linear-gradient(45deg, ${getColorByTemperature(temp1)}, ${getColorByTemperature(temp2)})`; // Màu lạnh (xanh dương) 
   }
-
+  const splitRange = (range) => {
+    const [start, end] = range.split('-').map(Number); // Tách chuỗi và chuyển thành số
+  
+    return { start: parseInt(start), end: parseInt(end) }; // Trả về đối tượng đúng
+  };
   return (
     <div className="weather-app">
       <h1>Weather Forecast App</h1>
@@ -241,7 +245,7 @@ const getColorByTemperature = (temp) => {
             <h3>Forecast for the next 5 days</h3>
             <div className="daily-list">
               {weather.daily.map((day, index) => (
-                <div key={index} className="daily-item" style={{ background: setBackgroundColorByTemperature(parseInt(splitRange(day.temp).start), parseInt(splitRange(day.temp).end)) }}>
+                <div key={index} className="daily-item" style={{ background: setBackgroundColorByTemperature(parseInt(day.tempMin), parseInt(day.tempMax)) }}>
                   <p className="weekday">{getWeekday(day.date)}</p>  {/* Thêm thứ trong tuần */}
                   <p className="temperature">{day.tempMin}   -  {day.tempMax}°C</p>  {/* Nhiệt độ */}
                   <span className="weather-icon">{getWeatherIcon(day.weather,null)}</span>  {/* Biểu tượng thời tiết */}
