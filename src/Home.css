@@ -90,6 +90,19 @@
 .weather-info h2{
     font-size: 40px;
 }
+h2 {
+  text-align: center;  /* Căn giữa nội dung của thẻ h2 */
+}
+
+.city-name {
+  font-size: 1.8em;  /* Kích thước chữ cho tên thành phố */
+}
+
+.current-time {
+  display: block;    /* Đưa thời gian xuống dòng mới */
+  font-size: 1.2em;   /* Kích thước chữ cho thời gian */
+  color: #333;       /* Màu chữ tối */
+}
 
 .weather-icon {
     font-size: 50px;  /* Điều chỉnh kích thước biểu tượng theo nhu cầu */
