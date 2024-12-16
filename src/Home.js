@@ -17,7 +17,8 @@ const WeatherApp = () => {
       setError('Please enter city name!');
       return;
     }
-
+//https://myweatherapi-4fcs.onrender.com
+//http://localhost:5237
     try {
       const response = await axios.get(`https://myweatherapi-4fcs.onrender.com/api/get-weather-at?city=${city}`);
       setWeather(response.data);
