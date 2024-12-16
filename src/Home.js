@@ -29,57 +29,82 @@ const WeatherApp = () => {
 
   const getWeatherIcon = (weatherCondition, time) => {
     if (!weatherCondition) return '';
-  
+
     // Mã hóa điều kiện thời tiết thành biểu tượng tương ứng
     const iconMapping = {
-      day: {
-        'clear sky': '🌞',         // Clear sky
-        'few clouds': '🌤️',       // Few clouds
-        'scattered clouds': '⛅',  // Scattered clouds
-        'broken clouds': '☁️',     // Broken clouds
-        'overcast clouds': '☁️',   // Overcast clouds
-        'shower rain': '🌧️',      // Shower rain
-        'rain': '🌧️',             // Rain
-        'thunderstorm': '🌩️',     // Thunderstorm
-        'snow': '❄️',              // Snow
-        'mist': '🌫️',             // Mist
-        'light rain': '🌦️',       // Light rain
-        'light snow': '🌨️',       // Light snow
-        'drizzle': '🌦️',          // Drizzle
-        'heavy rain': '🌧️',       // Heavy rain
-        'heavy snow': '❄️',     // Heavy snow
-        'fog': '🌫️',
-        'default': '🌞'            // Biểu tượng mặc định ban ngày
-      },
-      night: {
-        'clear sky': '🌕',         // Clear sky (full moon)
-        'few clouds': '🌙',     // Few clouds at night
-        'scattered clouds': '🌙', // Scattered clouds at night
-        'broken clouds': '☁️',     // Broken clouds (same as day)
-        'overcast clouds': '☁️',
-        'shower rain': '🌧️',
-        'rain': '🌧️',
-        'thunderstorm': '🌩️',
-        'snow': '❄️',
-        'mist': '🌫️',
-        'light rain': '🌦️',     // Light rain at night
-        'light snow': '🌨️',     // Light snow at night
-        'drizzle': '🌦️',        // Drizzle at night
-        'heavy rain': '🌧️',
-        'heavy snow': '❄️❄️',
-        'fog': '🌫️',
-        'default': '🌙'          // Biểu tượng mặc định ban đêm
-      }
+        day: {
+            'clear sky': '🌞',             // Trời trong
+            'few clouds': '🌤️',           // Ít mây
+            'scattered clouds': '⛅',      // Mây rải rác
+            'broken clouds': '☁️',         // Mây đứt đoạn
+            'overcast clouds': '☁️',       // Mây u ám
+            'light rain': '🌧️',           // Mưa nhẹ
+            'moderate rain': '🌧️',        // Mưa vừa
+            'heavy intensity rain': '🌧️', // Mưa lớn
+            'very heavy rain': '🌧️',      // Mưa rất lớn
+            'extreme rain': '🌧️',         // Mưa cực lớn
+            'freezing rain': '🌨️',        // Mưa băng
+            'light snow': '❄️',           // Tuyết nhẹ
+            'snow': '❄️',                 // Tuyết
+            'heavy snow': '❄️',           // Tuyết nặng
+            'sleet': '❄️',                // Mưa tuyết
+            'light shower sleet': '❄️',   // Mưa tuyết nhẹ
+            'shower sleet': '❄️',         // Mưa tuyết rào
+            'thunderstorm': '🌩️',         // Giông bão
+            'mist': '🌫️',                 // Sương mù nhẹ
+            'fog': '🌫️',                  // Sương mù
+            'haze': '🌫️',                 // Mù khô
+            'smoke': '💨',                // Khói
+            'dust': '🌪️',                // Bụi
+            'sand': '🌪️',                // Cát
+            'sand/dust whirls': '🌪️',     // Lốc bụi/cát
+            'volcanic ash': '🌋',         // Tro núi lửa
+            'squalls': '💨',              // Gió giật
+            'tornado': '🌪️',             // Lốc xoáy
+            'default': '🌞'               // Biểu tượng mặc định ban ngày
+        },
+        night: {
+            'clear sky': '🌕',             // Trời quang
+            'few clouds': '🌙',           // Ít mây
+            'scattered clouds': '🌙',     // Mây rải rác
+            'broken clouds': '☁️',         // Mây đứt đoạn
+            'overcast clouds': '☁️',       // Mây u ám
+            'light rain': '🌧️',           // Mưa nhẹ
+            'moderate rain': '🌧️',        // Mưa vừa
+            'heavy intensity rain': '🌧️', // Mưa lớn
+            'very heavy rain': '🌧️',      // Mưa rất lớn
+            'extreme rain': '🌧️',         // Mưa cực lớn
+            'freezing rain': '❄️',        // Mưa băng
+            'light snow': '❄️',           // Tuyết nhẹ
+            'snow': '❄️',                 // Tuyết
+            'heavy snow': '❄️',           // Tuyết nặng
+            'sleet': '❄️',                // Mưa tuyết
+            'light shower sleet': '❄️',   // Mưa tuyết nhẹ
+            'shower sleet': '❄️',         // Mưa tuyết rào
+            'thunderstorm': '🌩️',         // Giông bão
+            'mist': '🌫️',                 // Sương mù nhẹ
+            'fog': '🌫️',                  // Sương mù
+            'haze': '🌫️',                 // Mù khô
+            'smoke': '💨',                // Khói
+            'dust': '🌪️',                // Bụi
+            'sand': '🌪️',                // Cát
+            'sand/dust whirls': '🌪️',     // Lốc bụi/cát
+            'volcanic ash': '🌋',         // Tro núi lửa
+            'squalls': '💨',              // Gió giật
+            'tornado': '🌪️',             // Lốc xoáy
+            'default': '🌙'               // Biểu tượng mặc định ban đêm
+        }
     };
-  
+
     // Xác định là ban ngày hay ban đêm
-    // Xác định ngày hoặc đêm dựa trên giờ
-    const isDay = time >= 6 && time < 18; // Ngày từ 6h sáng đến 18h tối
-    const weatherIcons = isDay || time == null ? iconMapping.day : iconMapping.night;
     
+    const isDay = time != null && time >= 6 && time < 18; // Ngày từ 6h sáng đến 18h tối
+    const weatherIcons = isDay ? iconMapping.day : iconMapping.night;
+
     // Trả về biểu tượng tương ứng, nếu không có sẽ trả về biểu tượng mặc định
     return weatherIcons[weatherCondition.toLowerCase()] || weatherIcons['default'];
-  };
+};
+
   const getWeekday = (date) => {
     if (!date) return ''; // Kiểm tra xem date có hợp lệ không
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
