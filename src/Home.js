@@ -29,7 +29,8 @@ const WeatherApp = () => {
 
   const getWeatherIcon = (weatherCondition, time) => {
     if (!weatherCondition) return '';
-
+    const [hour] = time.split(':'); // Tách chuỗi theo dấu ":" và lấy phần giờ
+    time = parseInt(hour, 10);
     // Mã hóa điều kiện thời tiết thành biểu tượng tương ứng
     const iconMapping = {
         day: {
@@ -105,12 +106,21 @@ const WeatherApp = () => {
     return weatherIcons[weatherCondition.toLowerCase()] || weatherIcons['default'];
 };
 
-  const getWeekday = (date) => {
-    if (!date) return ''; // Kiểm tra xem date có hợp lệ không
-    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    const day = new Date(date).getDay();
-    return days[day];  // Trả về thứ trong tuần
-  };
+const getWeekday = (date) => {
+  if (!date) return ''; // Kiểm tra xem date có hợp lệ không
+
+  // Chuyển đổi chuỗi DD/MM/YYYY thành đối tượng Date
+  const [day, month, year] = date.split('/').map(Number);
+  const parsedDate = new Date(year, month - 1, day); // Lưu ý: Tháng trong Date bắt đầu từ 0
+
+  if (isNaN(parsedDate)) return ''; // Kiểm tra xem ngày tháng có hợp lệ không
+
+  // Mảng các thứ trong tuần
+  const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const dayOfWeek = parsedDate.getDay(); // Lấy thứ trong tuần (0 - 6)
+
+  return days[dayOfWeek]; // Trả về thứ trong tuần
+};
 
   // Hàm để định dạng ngày tháng
   const formatDate = (date) => {
@@ -220,7 +230,6 @@ const getColorByTemperature = (temp) => {
               {weather.daily.map((day, index) => (
                 <div key={index} className="daily-item" style={{ background: setBackgroundColorByTemperature(parseInt(splitRange(day.temp).start), parseInt(splitRange(day.temp).end)) }}>
                   <p className="weekday">{getWeekday(day.date)}</p>  {/* Thêm thứ trong tuần */}
-                  <p className="datedate">{formatDate(day.date)}</p>  {/* Định dạng ngày tháng */}
                   <p className="temperature">{splitRange(day.temp).start}°C   to  {splitRange(day.temp).end}°C</p>  {/* Nhiệt độ */}
                   <span className="weather-icon">{getWeatherIcon(day.weather,null)}</span>  {/* Biểu tượng thời tiết */}
                 </div>
